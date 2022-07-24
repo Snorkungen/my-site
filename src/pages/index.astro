@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+
+const props = {
+  title: "Welcome"
+}
+---
+
+<BaseLayout {...props}>
+  <div id="welcome">
+    <div id="hero">
+      <h1>Jonne Oke</h1>
+      <blockquote class="quote">I know that I know nothing - Socrates</blockquote>
+      <a href="#posts">&gt;&gt;More&lt;&lt;</a>
+    </div>
+    <div id="projects">
+      <ProjectCard title="Gilbert"
+        content="Welcome to Gilbert the inexplicable social media for sharing and storing links."
+        to="https://gilbrt.net/" />
+      <ProjectCard title="Color Picker" content="An old project that uses JavaScript to select a RGB color."
+        to="https://snorkungen.github.io/clrpicker/" />
+    </div>
+  </div>
+  <div id="posts">
+    <h1>Here is my blog.</h1>
+  </div>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+export interface CardProps {
+    title: string;
+    content: string;
+    imgSrc?: string;
+    to?: string;
+}
+
+const { title, content, imgSrc, to } = Astro.props as CardProps;
+---
+
+<div class="card">
+    {imgSrc && (
+    <div class="top-img">
+        <img src={imgSrc} alt="Picture of the project" />
+    </div>
+    )}
+
+    <h1>{title}</h1>
+    <p>{content}</p>
+    {to && (
+    <a href={to} target="_parent" referrerpolicy="no-referrer">More</a>
+    )}
+</div>
