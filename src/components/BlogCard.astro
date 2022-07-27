@@ -1,0 +1,16 @@
+---
+export type BlogCardProps = {
+    title: string;
+    date: Date;
+    url: string;
+}
+
+const { title, url } = Astro.props as BlogCardProps;
+---
+
+<div class="blog-card">
+    <h2>{title}</h2>
+    <div>
+        <a href={url}>Open</a>
+    </div>
+</div>

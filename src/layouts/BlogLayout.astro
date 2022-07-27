@@ -1,0 +1,26 @@
+---
+import Head from "@components/Head.astro";
+import Footer from "@components/Footer.astro";
+
+import "@styles/blog.scss";
+
+const { content } = Astro.props;
+---
+
+<html>
+
+<Head>
+    <title>{content.title}</title>
+</Head>
+
+<body id="blog">
+    <header>
+        <h1>{content.title}</h1>
+    </header>
+    <main>
+        <slot />
+    </main>
+    <Footer></Footer>
+</body>
+
+</html>

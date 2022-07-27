@@ -1,24 +1,19 @@
 ---
-export interface CardProps {
-    title: string;
-    content: string;
-    imgSrc?: string;
-    to?: string;
+export type ProjectCardProps = {
+    name: string;
+    description: string;
+    link?: string;
 }
 
-const { title, content, imgSrc, to } = Astro.props as CardProps;
+const { name, description, link } = Astro.props as ProjectCardProps;
 ---
 
-<div class="card">
-    {imgSrc && (
-    <div class="top-img">
-        <img src={imgSrc} alt="Picture of the project" />
+<div class="project-card">
+    <div class="top">
+        <h2>{name}</h2>
     </div>
-    )}
-
-    <h1>{title}</h1>
-    <p>{content}</p>
-    {to && (
-    <a href={to} target="_parent" referrerpolicy="no-referrer">More</a>
+    <p>{description}</p>
+    {link && (
+    <a href={link}>More</a>
     )}
 </div>

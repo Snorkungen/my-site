@@ -1,29 +1,80 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import Head from "@components/Head.astro";
+import ProjectCard, { ProjectCardProps } from "@components/ProjectCard.astro";
+import BlogCard from "@components/BlogCard.astro";
+import Footer from "@components/Footer.astro";
+
+import "@styles/index.scss";
+
+const projects: ProjectCardProps[] = [
+    {
+        name: "Gilbert",
+        description: "A web app that allows you to group an save urls.",
+        link: "https://gilbrt.net"
+    },
+    {
+        name: "Color Picker",
+        description: "A page built with HTML, CSS and JS that allows you to find RGB colors.",
+        link: "https://snorkungen.github.io/clrpicker/"
+    },
+    {
+        name: "My Blog",
+        description: "Me honestly just practicing markdown.",
+        link: "#blog"
+    }
+];
 
 
-const props = {
-  title: "Welcome"
-}
+
+const posts = await Astro.glob<{
+    title: string;
+    date: string;
+    draft?: string;
+}>("../pages/blog/*.md")
+
 ---
 
-<BaseLayout {...props}>
-  <div id="welcome">
-    <div id="hero">
-      <h1>Jonne Oke</h1>
-      <blockquote class="quote">I know that I know nothing - Socrates</blockquote>
-      <a href="#posts">&gt;&gt;More&lt;&lt;</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<Head>
+    <title>Jonne Oke's UnSmart Site</title>
+</Head>
+
+<body>
+    <div id="welcome">
+        <header>
+            <h1 id="name">Jonne <span>Oke</span></h1>
+            <ul id="social-links">
+            </ul>
+        </header>
+        <nav id="projects">
+            <!-- <h1>Projects</h1> -->
+
+            {
+            projects.map((project) => (
+                <ProjectCard {...project} />
+            ))
+            }
+
+        </nav>
     </div>
-    <div id="projects">
-      <ProjectCard title="Gilbert"
-        content="Welcome to Gilbert the inexplicable social media for sharing and storing links."
-        to="https://gilbrt.net/" />
-      <ProjectCard title="Color Picker" content="An old project that uses JavaScript to select a RGB color."
-        to="https://snorkungen.github.io/clrpicker/" />
+    <div id="blog">
+        <h1 id="blog-title">Hello welcome to my blog.</h1>
+        {
+        posts
+        .filter(({frontmatter:{draft}}) => !draft)
+        .map(({frontmatter,url}) => ({
+            url,
+            title:frontmatter.title,
+            date : new Date(frontmatter.date)
+        }))
+        .map((post) => (
+            <BlogCard {...post} />
+        ))
+        }
     </div>
-  </div>
-  <div id="posts">
-    <h1>Here is my blog.</h1>
-  </div>
-</BaseLayout>
+    <Footer></Footer>
+</body>
+
+</html>
