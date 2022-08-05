@@ -4,9 +4,17 @@
 
 <style lang="scss">
     footer {
-        p {
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+
+            color: inherit;
+            text-decoration: none;
+
+
             float: right;
-            margin: 0 10% 0 0;
+            margin: 0 5% 1em 0;
 
             span {
                 color: var(--fg-color);
@@ -17,5 +25,7 @@
 
 <footer>
     <slot />
-    <p>Oghenochuko <span>Jonne</span> Nikanor <span>Oke</span></p>
+    <a href="/">
+        <p>Oghenochuko <span>Jonne</span> Nikanor <span>Oke</span> -2022-</p>
+    </a>
 </footer>

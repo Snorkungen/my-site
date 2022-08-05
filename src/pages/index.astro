@@ -1,15 +1,14 @@
 ---
 import Head from "@components/Head.astro";
 import ProjectCard, { ProjectCardProps } from "@components/ProjectCard.astro";
-import BlogCard from "@components/BlogCard.astro";
+import Welcome from "@components/Welcome.astro";
+import Blog from "@components/Blog.astro";
 import Footer from "@components/Footer.astro";
-
-import "@styles/index.scss";
 
 const projects: ProjectCardProps[] = [
     {
         name: "Gilbert",
-        description: "A web app that allows you to group an save urls.",
+        description: "A web app that allows you to group and save urls.",
         link: "https://gilbrt.net"
     },
     {
@@ -42,38 +41,12 @@ const posts = await Astro.glob<{
 </Head>
 
 <body>
-    <div id="welcome">
-        <header>
-            <h1 id="name">Jonne <span>Oke</span></h1>
-            <ul id="social-links">
-            </ul>
-        </header>
-        <nav id="projects">
-            <!-- <h1>Projects</h1> -->
-
-            {
-            projects.map((project) => (
-                <ProjectCard {...project} />
-            ))
-            }
-
-        </nav>
-    </div>
-    <div id="blog">
-        <h1 id="blog-title">Hello welcome to my blog.</h1>
-        {
-        posts
-        .filter(({frontmatter:{draft}}) => !draft)
-        .map(({frontmatter,url}) => ({
-            url,
-            title:frontmatter.title,
-            date : new Date(frontmatter.date)
-        }))
-        .map((post) => (
-            <BlogCard {...post} />
-        ))
-        }
-    </div>
+    <Welcome>
+        {projects.map((project) => (
+        <ProjectCard {...project} />
+        ))}
+    </Welcome>
+    <Blog></Blog>
     <Footer></Footer>
 </body>
 

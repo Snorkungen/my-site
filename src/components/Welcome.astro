@@ -1,0 +1,36 @@
+---
+import Header from "./Header.astro";
+
+---
+
+<style lang="scss">
+    div {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+
+        >header {
+            height: 50%;
+        }
+
+        >nav {
+            display: grid;
+            grid-auto-flow: row;
+            place-items: center;
+
+            gap: 1em;
+        }
+    }
+</style>
+
+
+<div>
+    <Header></Header>
+    <nav>
+        <slot />
+    </nav>
+</div>
