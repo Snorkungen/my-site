@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a unique identifier.</title>
+<link rel="stylesheet" href="/assets/27fbdf3b.f24890ae.css" /></head>
+
+<body id="blog">
+    <header>
+        <h1>Create a unique identifier.</h1>
+    </header>
+    <main>
+        <link rel="stylesheet" href="/assets/27fbdf3b.f24890ae.css" /><p>Creating a unique identifier is needed for many things. So how do i create unique identifier, or as i will continue to call it uuid?</p><p>Creating a uuid can be simple below is an simple example.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">var identifiers_created = 0</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">FUNCTION create_identifier </span></span>
+<span class="line"><span style="color: #c9d1d9">    identifiers_created = identifiers_created + 1</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    RETURN identifiers_created</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span></code></pre><p>In the example above the program is keeping track of how many identifiers have been created. By knowing how many identifiers have created the program can ensure that each identifier is unique.</p><p>Now that you know how create a simple uuid. You can start thinking about more complicated situations like for example, if you need to create millions of uuids you might need to think about space. So how do keep it simple yet save space? A solution would be to encode the number of identifiers somehow. Below is an example.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">var identifiers_created = 0</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">FUNCTION create_identifier </span></span>
+<span class="line"><span style="color: #c9d1d9">    identifiers_created = identifiers_created + 1</span></span>
+<span class="line"><span style="color: #c9d1d9">    </span></span>
+<span class="line"><span style="color: #c9d1d9">    RETURN convert_decimal_to_hexadecimal (identifiers_created)</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span></code></pre><p>The example above looks very similar to the previous example. The difference here is that the number is converted to a hexadecimal value. Converting to hexadecimal would maybe not be the most effiest way to encode the identifier.</p><p>Now we can have some fun and play around with the uuid. Below is an example.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">var identifiers_created_today = 0</span></span>
+<span class="line"><span style="color: #c9d1d9">var last_date_used</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">FUNCTION create_identifier </span></span>
+<span class="line"><span style="color: #c9d1d9">    var todays_date = GET_DATE ()</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    IF todays_date == last_date_used </span></span>
+<span class="line"><span style="color: #c9d1d9">    THEN </span></span>
+<span class="line"><span style="color: #c9d1d9">        identifiers_created_today = identifiers_created_today + 1</span></span>
+<span class="line"><span style="color: #c9d1d9">    ELSE</span></span>
+<span class="line"><span style="color: #c9d1d9">        identifiers_created_today = 1</span></span>
+<span class="line"><span style="color: #c9d1d9">    FI</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    last_date_used = todays_date</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    RETURN todays_date + identifiers_created_today</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span></code></pre><p>The example above combines a date which is most likely unique with the number of uuids created on the same day.</p><h3 id="conclusion">Conclusion</h3><p>Creating an unique identifier is not that challenging of a problem.</p>
+    </main>
+    
+
+<footer class="astro-7F47IOMH">
+    
+    <a href="/" class="astro-7F47IOMH">
+        <p class="astro-7F47IOMH">Oghenochuko <span class="astro-7F47IOMH">Jonne</span> Nikanor <span class="astro-7F47IOMH">Oke</span> -2022-</p>
+    </a>
+</footer>
+</body></html>
