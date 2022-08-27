@@ -5,7 +5,7 @@
     draft: false 
 ---
 
-Creating a unique identifier is needed for many things. So how do i create unique identifier, or as i will continue to call it uuid?
+Creating a unique identifier is needed for many things. So how do I create unique identifier, or as I will continue to call it uuid?
 
 Creating a uuid can be simple below is an simple example.
 ```
