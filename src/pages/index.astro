@@ -12,6 +12,11 @@ const projects: ProjectCardProps[] = [
         link: "https://gilbrt.net",
     },
     {
+        name: "UnSmart Colors App",
+        description: "An attempt at dynamically generating a color scheme for a web page.",
+        link: "https://ochuko.me/unsmart-colors-app/#FC7200",
+    },
+    {
         name: "Color Picker",
         description: "A page built with HTML, CSS and JS that allows you to find RGB colors.",
         link: "https://snorkungen.github.io/clrpicker/",
@@ -27,12 +32,6 @@ const projects: ProjectCardProps[] = [
         link: "#blog",
     },
 ];
-
-const posts = await Astro.glob<{
-    title: string;
-    date: string;
-    draft?: string;
-}>("../pages/blog/*.md");
 ---
 
 <!DOCTYPE html>
