@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Gilbert",
+        "description": "A web app that allows you to group and save urls.",
+        "href": "https://gilbrt.net"
+    },
+    {
+        "name": "UnSmart Colors App",
+        "description": "An attempt at dynamically generating a color scheme for a web page.",
+        "href": "https://ochuko.me/unsmart-colors-app/#FC7200"
+    },
+    {
+        "name": "Color Picker",
+        "description": "A page built with HTML, CSS and JS that allows you to find RGB colors.",
+        "href": "https://snorkungen.github.io/clrpicker/"
+    },
+    {
+        "name": "Encrypted File Share App",
+        "description": "An app that allows the user to encrypt and decrypt a file on the client. And then store the the encrypted file on a server.",
+        "href": "https://github.com/Snorkungen/encrypted-file-share-app"
+    },
+    {
+        "name": "My Blog",
+        "description": "Me honestly just practicing markdown.",
+        "href": "/blog"
+    }
+]

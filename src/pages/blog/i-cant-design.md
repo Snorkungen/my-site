@@ -1,8 +1,9 @@
 ---
-    layout: "@layouts/BlogLayout.astro"
+    layout: "../../layouts/BlogLayout.astro"
     title: "I can't do web-design."
     date: "27 July 2022"
     draft: false 
+    description: "A collection of words stuctured to convey meaning. As to why my web-design looks bad."
 ---
 
 ## What is web-design?

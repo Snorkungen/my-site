@@ -1,11 +1,16 @@
-import {
-    defineConfig
-} from "astro/config";
+import { defineConfig } from 'astro/config';
 
-// htpps://astro.build/config
+// https://astro.build/config
+import tailwind from "@astrojs/tailwind";
+
+// https://astro.build/config
 export default defineConfig({
-    markdown: {
-        syntaxHighlight: "shiki",
-        drafts:true
+  integrations: [tailwind()],
+  markdown: {
+    drafts: true,
+    shikiConfig: {
+      theme: "rose-pine-moon",
+      wrap: true
     }
+  }
 });

@@ -1,0 +1,8 @@
+<svg width="100px" height="100px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" color="#fc7200" fill="#FC730e">
+    <path stroke="currentColor" fill="currentFill" d="M6 20v7h4v-7 Z" stroke-linejoin="round" />
+    <path stroke="currentColor" fill="currentFill" d="M14 20v10h4v-10 Z" stroke-linejoin="round" />
+    <path stroke="currentColor" fill="currentFill" d="M22 20v15h4v-15 Z" stroke-linejoin="round" />
+    <path stroke="currentColor" fill="currentFill" d="M30 20v6h4v-6 Z" stroke-linejoin="round" />
+
+    <path stroke="currentColor" fill="currentFill" d="M5 20V5L13 12L20 5L27 12L35 5V20 Z" stroke-linejoin="round" />
+</svg>

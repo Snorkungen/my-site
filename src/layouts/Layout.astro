@@ -1,0 +1,60 @@
+---
+export interface Props {
+  title: string;
+}
+
+import Github from "../components/icons/Github.astro";
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="h-full w-full font-sans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/snorkungen.line.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="w-full h-full bg-background text-foreground flex flex-col">
+    <div class="flex-grow overflow-auto">
+      <slot />
+    </div>
+    <footer
+      class="grid sm:grid-cols-3 justify-center bg-primary text-foreground p-3"
+    >
+      <div class="flex items-center sm:justify-start justify-center">
+        <a href="/">
+          <h1 class="font-bold text-2xl">Jonne Oke</h1>
+        </a>
+      </div>
+      <div class="flex justify-around">
+        <a
+          href="https://github.com/Snorkungen"
+          class="text-foreground hover:text-foreground-4 transition-colors text-2xl"
+          aria-label="Github Icon"
+        >
+          <Github size={40} />
+        </a>
+      </div>
+      <div class="flex items-center">
+        <p class="sm:text-end text-center w-full">
+          Last updated: <span id="last-updated-time">{Date.now()}</span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<script>
+  const lastUpdatedElement = document.getElementById("last-updated-time");
+  function convertContentToDate(element: HTMLElement) {
+    let timeAsNumber = Number(element.textContent);
+    element.textContent = new Date(timeAsNumber).toDateString();
+  }
+
+  if (lastUpdatedElement) {
+    convertContentToDate(lastUpdatedElement);
+  }
+</script>

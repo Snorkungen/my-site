@@ -1,50 +1,44 @@
 ---
-import Head from "@components/Head.astro";
-import ProjectCard, { ProjectCardProps } from "@components/ProjectCard.astro";
-import Welcome from "@components/Welcome.astro";
-import Blog from "@components/Blog.astro";
-import Footer from "@components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
 
-const projects: ProjectCardProps[] = [
-    {
-        name: "Gilbert",
-        description: "A web app that allows you to group and save urls.",
-        link: "https://gilbrt.net",
-    },
-    {
-        name: "UnSmart Colors App",
-        description: "An attempt at dynamically generating a color scheme for a web page.",
-        link: "https://ochuko.me/unsmart-colors-app/#FC7200",
-    },
-    {
-        name: "Color Picker",
-        description: "A page built with HTML, CSS and JS that allows you to find RGB colors.",
-        link: "https://snorkungen.github.io/clrpicker/",
-    },
-    {
-        name: "Encrypted File Share App",
-        description: "An app that allows the user to encrypt and decrypt a file on the client. And then store the the encrypted file on a server.",
-        link: "https://github.com/Snorkungen/encrypted-file-share-app",
-    },
-    {
-        name: "My Blog",
-        description: "Me honestly just practicing markdown.",
-        link: "#blog",
-    },
+const pages = [
+  {
+    url: "/blog",
+  },
+  {
+    url: "/projects",
+  },
 ];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-    <Head>
-        <title>Jonne Oke's UnSmart Site</title>
-    </Head>
+<Layout title="Jonne Oke UnSmart Site">
+  <div class="w-full h-full grid place-items-center">
+    <main class="w-full">
+      <div
+        class="text-center font-semibold sm:text-9xl text-6xl py-8 border-b-4 border-b-foreground-1"
+      >
+        <h1>Jonne Oke</h1>
+      </div>
+      <div class="sm:w-2/3 block mx-auto my-6 text-center">
+        <p class="p-4">Hello, I enjoy writing Typescript.</p>
 
-    <body>
-        <Welcome>
-            {projects.map((project) => <ProjectCard {...project} />)}
-        </Welcome>
-        <Blog />
-        <Footer />
-    </body>
-</html>
+        <div class="flex items-center justify-around mt-10 underline">
+          {
+            pages.map(({ url }) => (
+              <a
+                href={url}
+                class="transition-colors hover:text-foreground-4 font-semibold"
+              >
+                {url}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<script>
+  console.log();
+</script>

@@ -1,8 +1,9 @@
 ---
-    layout: "@layouts/BlogLayout.astro"
+    layout: "../../layouts/BlogLayout.astro"
     title: "First Blog Post"
     date: "26 July 2022"
     draft: true 
+    description: "My first blog entry"
 ---
 
 # Hello And Welcome
@@ -13,11 +14,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Ac orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Id velit ut tortor pretium viverra suspendisse potenti nullam. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Congue mauris rhoncus aenean vel elit scelerisque mauris. Ipsum dolor sit amet consectetur adipiscing elit. Ac turpis egestas integer eget. Feugiat vivamus at augue eget arcu dictum. Scelerisque purus semper eget duis at tellus at. Nunc faucibus a pellentesque sit amet porttitor eget dolor. Dui ut ornare lectus sit amet est placerat in egestas. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Urna porttitor rhoncus dolor purus non enim praesent. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis.
 
-
 ```json
-    {
-        "welcome" : "no"
-    }
+{
+  "welcome": "no"
+}
 ```
 
     - Hello
