@@ -1,59 +1,91 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="en" class="h-full w-full font-sans">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/snorkungen.line.svg">
+    <meta name="generator" content="Astro v1.5.0">
     <title>Create a unique identifier.</title>
-<link rel="stylesheet" href="/assets/27fbdf3b.f24890ae.css" /></head>
-
-<body id="blog">
-    <header>
-        <h1>Create a unique identifier.</h1>
-    </header>
-    <main>
-        <link rel="stylesheet" href="/assets/27fbdf3b.f24890ae.css" /><p>Creating a unique identifier is needed for many things. So how do I create unique identifier, or as I will continue to call it uuid?</p><p>Creating a uuid can be simple below is an simple example.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">var identifiers_created = 0</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">FUNCTION create_identifier </span></span>
-<span class="line"><span style="color: #c9d1d9">    identifiers_created = identifiers_created + 1</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">    RETURN identifiers_created</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span></code></pre><p>In the example above the program is keeping track of how many identifiers have been created. By knowing how many identifiers have created the program can ensure that each identifier is unique.</p><p>Now that you know how create a simple uuid. You can start thinking about more complicated situations like for example, if you need to create millions of uuids you might need to think about space. So how do keep it simple yet save space? A solution would be to encode the number of identifiers somehow. Below is an example.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">var identifiers_created = 0</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">FUNCTION create_identifier </span></span>
-<span class="line"><span style="color: #c9d1d9">    identifiers_created = identifiers_created + 1</span></span>
-<span class="line"><span style="color: #c9d1d9">    </span></span>
-<span class="line"><span style="color: #c9d1d9">    RETURN convert_decimal_to_hexadecimal (identifiers_created)</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span></code></pre><p>The example above looks very similar to the previous example. The difference here is that the number is converted to a hexadecimal value. Converting to hexadecimal would maybe not be the most effiest way to encode the identifier.</p><p>Now we can have some fun and play around with the uuid. Below is an example.</p><pre class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">var identifiers_created_today = 0</span></span>
-<span class="line"><span style="color: #c9d1d9">var last_date_used</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">FUNCTION create_identifier </span></span>
-<span class="line"><span style="color: #c9d1d9">    var todays_date = GET_DATE ()</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">    IF todays_date == last_date_used </span></span>
-<span class="line"><span style="color: #c9d1d9">    THEN </span></span>
-<span class="line"><span style="color: #c9d1d9">        identifiers_created_today = identifiers_created_today + 1</span></span>
-<span class="line"><span style="color: #c9d1d9">    ELSE</span></span>
-<span class="line"><span style="color: #c9d1d9">        identifiers_created_today = 1</span></span>
-<span class="line"><span style="color: #c9d1d9">    FI</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">    last_date_used = todays_date</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span>
-<span class="line"><span style="color: #c9d1d9">    RETURN todays_date + identifiers_created_today</span></span>
-<span class="line"><span style="color: #c9d1d9"></span></span></code></pre><p>The example above combines a date which is most likely unique with the number of uuids created on the same day.</p><h3 id="conclusion">Conclusion</h3><p>Creating an unique identifier is not that challenging of a problem.</p>
+  <link rel="stylesheet" href="/assets/404.96c19229.css" />
+<link rel="stylesheet" href="/assets/create-unique-identifier.9999b2ad.css" /><script type="module" src="/hoisted.7cd34c77.js"></script></head>
+  <body class="w-full h-full bg-background text-foreground flex flex-col">
+    <div class="flex-grow overflow-auto">
+      <main class="w-full max-w-screen-md mx-auto block px-4">
+        <h1 class="text-center font-semibold text-2xl sm:text-4xl my-4 px-4 border-b-2 border-b-foreground pb-8">
+            Create a unique identifier.
+        </h1>
+        <div class="py-6 content">
+            <p>Creating a unique identifier is needed for many things. So how do I create unique identifier, or as I will continue to call it uid?</p>
+<p>Creating a uid can be simple, below is an simple example.</p>
+<pre is:raw="" class="astro-code" style="background-color: #232136; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"></span>
+<span class="line"><span style="color: #3E8FB0">var</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">FUNCTION</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">create_identifier</span><span style="color: #E0DEF4"> </span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">identifiers_created</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">+</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">RETURN</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created</span></span>
+<span class="line"></span></code></pre>
+<p>In the example above the program is keeping track of how many identifiers have been created. By knowing how many identifiers have created the program can ensure that each identifier is unique.</p>
+<p>Now that you know how create a simple uid. You can start thinking about more complicated situations like for example, if you need to create millions of uids you might need to think about space. So how do keep it simple yet save space? A solution would be to encode the number of identifiers somehow. Below is an example.</p>
+<pre is:raw="" class="astro-code" style="background-color: #232136; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"></span>
+<span class="line"><span style="color: #3E8FB0">var</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">FUNCTION</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">create_identifier</span><span style="color: #E0DEF4"> </span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">identifiers_created</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">+</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">1</span></span>
+<span class="line"><span style="color: #E0DEF4">    </span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">RETURN</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">convert_decimal_to_hexadecimal</span><span style="color: #E0DEF4"> (</span><span style="color: #E0DEF4">identifiers_created</span><span style="color: #E0DEF4">)</span></span>
+<span class="line"></span></code></pre>
+<p>The example above looks very similar to the previous example. The difference here is that the number is converted to a hexadecimal value. Converting to hexadecimal would maybe not be the most effiest way to encode the identifier.</p>
+<p>Now we can have some fun and play around with the uid. Below is an example.</p>
+<pre is:raw="" class="astro-code" style="background-color: #232136; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"></span>
+<span class="line"><span style="color: #3E8FB0">var</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created_today</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">0</span></span>
+<span class="line"><span style="color: #3E8FB0">var</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">last_date_used</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">FUNCTION</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">create_identifier</span><span style="color: #E0DEF4"> </span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #3E8FB0">var</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">todays_date</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">GET_DATE</span><span style="color: #E0DEF4"> ()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">IF</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">todays_date</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">==</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">last_date_used</span><span style="color: #E0DEF4"> </span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">THEN</span><span style="color: #E0DEF4"> </span></span>
+<span class="line"><span style="color: #E0DEF4">        </span><span style="color: #E0DEF4">identifiers_created_today</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created_today</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">+</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">1</span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">ELSE</span></span>
+<span class="line"><span style="color: #E0DEF4">        </span><span style="color: #E0DEF4">identifiers_created_today</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">1</span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">FI</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">last_date_used</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">todays_date</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #E0DEF4">RETURN</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">todays_date</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">+</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">identifiers_created_today</span></span>
+<span class="line"></span></code></pre>
+<p>The example above combines a date which is most likely unique with the number of uids created on the same day.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Creating an unique identifier is not that challenging of a problem.</p>
+        </div>
     </main>
-    
+    </div>
+    <footer class="grid sm:grid-cols-3 justify-center bg-primary text-foreground p-3">
+      <div class="flex items-center sm:justify-start justify-center">
+        <a href="/">
+          <h1 class="font-bold text-2xl">Jonne Oke</h1>
+        </a>
+      </div>
+      <div class="flex justify-around">
+        <a href="https://github.com/Snorkungen" class="text-foreground hover:text-foreground-4 transition-colors text-2xl" aria-label="Github Icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="Github Icon">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"></path>
+    </g>
+</svg>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <p class="sm:text-end text-center w-full">
+          Last updated: <span id="last-updated-time">1666616470516</span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
 
-<footer class="astro-7F47IOMH">
-    
-    <a href="/" class="astro-7F47IOMH">
-        <p class="astro-7F47IOMH">Oghenochuko <span class="astro-7F47IOMH">Jonne</span> Nikanor <span class="astro-7F47IOMH">Oke</span> -2022-</p>
-    </a>
-</footer>
-</body></html>
+
+
