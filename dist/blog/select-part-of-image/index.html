@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full w-full font-sans">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/snorkungen.line.svg">
+    <meta name="generator" content="Astro v1.5.0">
+    <title>Use JavaScript to select part of an image.</title>
+  <link rel="stylesheet" href="/assets/404.96c19229.css" />
+<link rel="stylesheet" href="/assets/create-unique-identifier.5cd303c8.css" /><script type="module" src="/hoisted.7cd34c77.js"></script></head>
+  <body class="w-full h-full bg-background text-foreground flex flex-col">
+    <div class="flex-grow overflow-auto">
+      <main class="w-full max-w-screen-md mx-auto block px-4">
+        <h1 class="text-center font-semibold text-2xl sm:text-4xl my-4 px-4 border-b-2 border-b-foreground pb-8">
+            Use JavaScript to select part of an image.
+        </h1>
+        <div class="py-6 content">
+            <h2 id="what">What?</h2>
+<p>In this post i will explain how to select part of an image, using JavaScript and HTML. By selecting part of an image, I’m talking about selecting the pixels within a specified area within an image.</p>
+<h2 id="why">Why?</h2>
+<p>Why you should learn how to select part of an image using JavaScript i do not know. But me personally looked for an answer to the stated problem stated above. Because i was trying to convert an image to pixelart I.e get the average colour within a section.</p>
+<h2 id="how">How?</h2>
+<p>First you will need an HTML file with an &#x3C;img/> tag. As in the example below.</p>
+<pre is:raw="" class="astro-code" style="background-color: #232136; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #908CAA">&#x3C;!--</span><span style="color: #6E6A86"> index.html </span><span style="color: #908CAA">--></span></span>
+<span class="line"><span style="color: #6E6A86">&#x3C;!</span><span style="color: #9CCFD8">DOCTYPE</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">html</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">html</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">lang</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"en"</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">head</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">meta</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">charset</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"UTF-8"</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">meta</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">http-equiv</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"X-UA-Compatible"</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">content</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"IE=edge"</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">meta</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">name</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"viewport"</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">content</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"width=device-width, initial-scale=1.0"</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">title</span><span style="color: #6E6A86">></span><span style="color: #E0DEF4">Image App</span><span style="color: #6E6A86">&#x3C;/</span><span style="color: #9CCFD8">title</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #6E6A86">&#x3C;/</span><span style="color: #9CCFD8">head</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">body</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #908CAA">&#x3C;!--</span><span style="color: #6E6A86"> Image from https://placeholder.com/ </span><span style="color: #908CAA">--></span></span>
+<span class="line"><span style="color: #E0DEF4">    </span><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">img</span><span style="color: #E0DEF4"> </span></span>
+<span class="line"><span style="color: #E0DEF4">        </span><span style="color: #C4A7E7">src</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"https://via.placeholder.com/400/000000/FFFFFF/?text=Place%20Holder"</span><span style="color: #E0DEF4"> </span></span>
+<span class="line"><span style="color: #E0DEF4">        </span><span style="color: #C4A7E7">id</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"image"</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #908CAA">    </span><span style="color: #6E6A86">&#x3C;</span><span style="color: #9CCFD8">script</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">defer</span><span style="color: #E0DEF4"> </span><span style="color: #C4A7E7">src</span><span style="color: #908CAA">=</span><span style="color: #F6C177">"client.js"</span><span style="color: #6E6A86">>&#x3C;/</span><span style="color: #9CCFD8">script</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #6E6A86">&#x3C;/</span><span style="color: #9CCFD8">body</span><span style="color: #6E6A86">></span></span>
+<span class="line"><span style="color: #6E6A86">&#x3C;/</span><span style="color: #9CCFD8">html</span><span style="color: #6E6A86">></span></span></code></pre>
+<p>Now for the fun part, let us first define constants we are going to need. (see in example below).</p>
+<pre is:raw="" class="astro-code" style="background-color: #232136; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #908CAA">//</span><span style="color: #6E6A86"> client.js</span></span>
+<span class="line"><span style="color: #3E8FB0">const</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">imageElement</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">document</span><span style="color: #3E8FB0">.</span><span style="color: #EA9A97">getElementById</span><span style="color: #E0DEF4">(</span><span style="color: #F6C177">"image"</span><span style="color: #E0DEF4">)</span><span style="color: #908CAA">;</span></span>
+<span class="line"><span style="color: #3E8FB0">const</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">canvasElement</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">document</span><span style="color: #3E8FB0">.</span><span style="color: #EA9A97">createElement</span><span style="color: #E0DEF4">(</span><span style="color: #F6C177">"canvas"</span><span style="color: #E0DEF4">)</span><span style="color: #908CAA">;</span></span>
+<span class="line"><span style="color: #3E8FB0">const</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">ctx</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">canvasElement</span><span style="color: #3E8FB0">.</span><span style="color: #EA9A97">getContext</span><span style="color: #E0DEF4">(</span><span style="color: #F6C177">"2d"</span><span style="color: #E0DEF4">)</span><span style="color: #908CAA">;</span></span>
+<span class="line"><span style="color: #3E8FB0">const</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">width</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">100</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">height</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">width</span><span style="color: #908CAA">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #908CAA">//</span><span style="color: #6E6A86"> Define the size of the canvas element.</span></span>
+<span class="line"><span style="color: #E0DEF4">canvasElement</span><span style="color: #3E8FB0">.</span><span style="color: #E0DEF4">width</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">width</span><span style="color: #908CAA">;</span></span>
+<span class="line"><span style="color: #E0DEF4">canvasElement</span><span style="color: #3E8FB0">.</span><span style="color: #E0DEF4">height</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">height</span><span style="color: #908CAA">;</span></span></code></pre>
+<p>Now we will draw a part of our image onto the canvas using the context API.</p>
+<pre is:raw="" class="astro-code" style="background-color: #232136; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #908CAA">//</span><span style="color: #6E6A86"> client.js</span></span>
+<span class="line"><span style="color: #908CAA">//</span><span style="color: #6E6A86"> ...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #3E8FB0">let</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">imgX</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">imageElement</span><span style="color: #3E8FB0">.</span><span style="color: #E0DEF4">naturalWidth</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">-</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">width</span><span style="color: #908CAA">;</span></span>
+<span class="line"><span style="color: #3E8FB0">let</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">imgY</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">0</span><span style="color: #908CAA">;</span></span>
+<span class="line"><span style="color: #E0DEF4">ctx</span><span style="color: #3E8FB0">.</span><span style="color: #EA9A97">drawImage</span><span style="color: #E0DEF4">(</span><span style="color: #E0DEF4">imageElement</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">imgX</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">imgY</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">width</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">height</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">0</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #EA9A97">0</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">canvasElement</span><span style="color: #3E8FB0">.</span><span style="color: #E0DEF4">width</span><span style="color: #908CAA">,</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">canvasElement</span><span style="color: #3E8FB0">.</span><span style="color: #E0DEF4">height</span><span style="color: #E0DEF4">)</span><span style="color: #908CAA">;</span></span></code></pre>
+<p>In the code above we are selecting an area from the top right of our image, and then covering the entire canvas with part of our image.</p>
+<p>The <strong>imgX</strong> and <strong>imgY</strong> variables define the x and y position of the area we want to select from the image. Keep in mind to use the <strong>naturalWidth</strong> and <strong>naturalHeight</strong> properties on the imageElement (as in the code above). The <strong>width</strong> and <strong>height</strong> variables used define the size of the area tha we are selecting from our image.</p>
+<p>Now that we have a canvas with a part of our image we can use the methods on the canvas object to extract the data. But for this simple post i will just replace our original image source with the top right corner that we drew onto the canvas (see below).</p>
+<pre is:raw="" class="astro-code" style="background-color: #232136; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"><code><span class="line"><span style="color: #908CAA">//</span><span style="color: #6E6A86"> client.js</span></span>
+<span class="line"><span style="color: #908CAA">//</span><span style="color: #6E6A86"> ...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E0DEF4">imageElement</span><span style="color: #3E8FB0">.</span><span style="color: #E0DEF4">src</span><span style="color: #E0DEF4"> </span><span style="color: #3E8FB0">=</span><span style="color: #E0DEF4"> </span><span style="color: #E0DEF4">canvasElement</span><span style="color: #3E8FB0">.</span><span style="color: #EA9A97">toDataURL</span><span style="color: #E0DEF4">()</span><span style="color: #908CAA">;</span></span></code></pre>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>
+<p>More on drawImage method <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage</a>.</p>
+</li>
+<li>
+<p>More on getting the pixel data from the canvas <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData</a>.</p>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope that this post has contained useful information. But mostly this is just a place to collect code snpippets on this subject and store links.</p>
+        </div>
+    </main>
+    </div>
+    <footer class="grid sm:grid-cols-3 justify-center bg-primary text-foreground p-3">
+      <div class="flex items-center sm:justify-start justify-center">
+        <a href="/">
+          <h1 class="font-bold text-2xl">Jonne Oke</h1>
+        </a>
+      </div>
+      <div class="flex justify-around">
+        <a href="https://github.com/Snorkungen" class="text-foreground hover:text-foreground-4 transition-colors text-2xl" aria-label="Github Icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="Github Icon">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"></path>
+    </g>
+</svg>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <p class="sm:text-end text-center w-full">
+          Last updated: <span id="last-updated-time">1673105462701</span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
+
