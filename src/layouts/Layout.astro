@@ -3,7 +3,6 @@ export interface Props {
   title: string;
 }
 
-import Github from "../components/icons/Github.astro";
 import Navbar from "../components/Navbar.astro";
 
 const { title } = Astro.props;
@@ -26,20 +25,11 @@ const { title } = Astro.props;
       <slot />
     </div>
     <footer
-      class="grid sm:grid-cols-3 justify-center bg-primary text-foreground p-3"
+      class="grid sm:grid-cols-2 justify-center bg-foreground text-primary p-3"
     >
       <div class="flex items-center sm:justify-start justify-center">
         <a href="/">
           <h1 class="font-bold text-2xl">Jonne Oke</h1>
-        </a>
-      </div>
-      <div class="flex justify-around">
-        <a
-          href="https://github.com/Snorkungen"
-          class="text-foreground hover:text-foreground-4 transition-colors text-2xl"
-          aria-label="Github Icon"
-        >
-          <Github size={40} />
         </a>
       </div>
       <div class="flex items-center">
