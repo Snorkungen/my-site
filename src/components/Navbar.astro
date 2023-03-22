@@ -1,0 +1,96 @@
+---
+import Github from "./icons/Github.astro";
+import Linkedin from "./icons/Linkedin.astro";
+import Snorkungen from "./icons/Snorkungen.astro";
+
+const pages = [
+    {
+        url: "/blog",
+        name: "Blog",
+    },
+    {
+        url: "/projects",
+        name: "Projects",
+    },
+];
+
+const links = [
+    {
+        href: "https://github.com/Snorkungen",
+        Icon: Github,
+        name: "Github",
+    },
+    {
+        href: "https://www.linkedin.com/in/jonne-oke/",
+        Icon: Linkedin,
+        name: "Linkedin"
+    }
+];
+---
+
+<nav
+    class="bg-foreground text-primary p-4 bg-gradient-to-t from-foreground-1 to-foreground flex max-md:flex-col relative"
+>
+    <div
+        class="flex justify-between items-center gap-5 md:w-fit md:grow-0 grow"
+    >
+        <Snorkungen size={48} />
+        <a href="/">
+            <h1
+                class="text-3xl font-semibold transition hover:text-primary-4 text-center"
+            >
+                Jonne Oke
+            </h1>
+        </a>
+        <div class="md:hidden w-min text-secondary cursor-pointer" id="nav-menu-toggle">
+            <!-- Hamburger menu -->
+            <svg width="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Hamburger_MD"> <path id="Vector" d="M5 17H19M5 12H19M5 7H19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+        </div>
+    </div>
+    <div class="grow justify-around items-center md:flex max-md:pt-6" id="nav-menu">
+        <div class="grow flex items-center">
+            <div
+                class="grow grid justify-center gap-2 md:grid-flow-col grid-flow-row max-md:justify-start"
+            >
+                {
+                    pages.map(({ url, name }) => (
+                        <a
+                            href={url}
+                            class="transition hover:bg-foreground rounded-md hover:text-primary-4 drop-shadow-2xl text-center font-semibold p-3"
+                        >
+                            {name}
+                        </a>
+                    ))
+                }
+            </div>
+            <div class="flex gap-2">
+                {
+                    links.map(({ href, Icon, name }) => (
+                        <a
+                            href={href}
+                            class="text-secondary hover:text-secondary-4 transition-colors text-2xl"
+                            aria-label={name + " Icon"}
+                            title={name + " Profile"}
+                        >
+                            <Icon size={40} />
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script lang="ts">
+    const navMenu = document.getElementById("nav-menu");
+    const navMenuToggle = document.getElementById("nav-menu-toggle");
+    if (navMenu instanceof HTMLElement && navMenuToggle instanceof HTMLElement) {
+        navMenuToggle.addEventListener("click", () => {
+            if (navMenu.classList.contains("hidden")) {
+                navMenu.classList.remove("hidden");
+            } else {   
+                navMenu.classList.add("hidden");
+            }
+        });
+    }
+</script>

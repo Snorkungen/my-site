@@ -4,6 +4,7 @@ export interface Props {
 }
 
 import Github from "../components/icons/Github.astro";
+import Navbar from "../components/Navbar.astro";
 
 const { title } = Astro.props;
 ---
@@ -17,7 +18,10 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="w-full h-full bg-background text-foreground flex flex-col">
+  <body
+    class="w-full h-full bg-background bg-gradient-to-b from-background to-background-2 text-foreground flex flex-col font-sans"
+  >
+    <Navbar />
     <div class="flex-grow overflow-auto">
       <slot />
     </div>
