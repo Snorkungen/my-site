@@ -5,6 +5,11 @@
         "href": "https://ochuko.me/unsmart-colors-app/#FC7200"
     },
     {
+        "name": "Unsmart Net-Tools",
+        "description": "An attempt at implementing the TCP/IP stack within a browser context.",
+        "href": "https://snorkungen.github.io/unsmart-net-tools"
+    },
+    {
         "name": "Color Picker",
         "description": "A page built with HTML, CSS and JS that allows you to find RGB colors.",
         "href": "https://snorkungen.github.io/clrpicker/"
